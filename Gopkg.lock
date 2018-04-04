@@ -2,14 +2,51 @@
 
 
 [[projects]]
+  name = "github.com/PuerkitoBio/goquery"
+  packages = ["."]
+  revision = "a86ea073017a6beddef78c8659e7224e8ca634b0"
+  version = "v1.4.0"
+
+[[projects]]
+  name = "github.com/andybalholm/cascadia"
+  packages = ["."]
+  revision = "901648c87902174f774fac311d7f176f8647bdaa"
+  version = "v1.0.0"
+
+[[projects]]
+  name = "github.com/aws/aws-lambda-go"
+  packages = [
+    "lambda",
+    "lambda/messages",
+    "lambdacontext"
+  ]
+  revision = "fafa7e49388b8991caf99308e80655ba91816b72"
+  version = "v1.1.0"
+
+[[projects]]
   branch = "master"
   name = "github.com/bluele/mecab-golang"
   packages = ["."]
   revision = "ea8730ebba3459a29142f1149749250e6f187677"
 
+[[projects]]
+  branch = "master"
+  name = "github.com/microcosm-cc/bluemonday"
+  packages = ["."]
+  revision = "995366fdf961d03629cd17361bddd32745718e2c"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/net"
+  packages = [
+    "html",
+    "html/atom"
+  ]
+  revision = "b68f30494add4df6bd8ef5e82803f308e7f7c59c"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "ef8a96b79b71c6e14dfc2b9dfc9115e425810050376bf1e011d0f0a8f6c65e17"
+  inputs-digest = "35dddae9b23d45cbe1e756d87b7ea0e05305cffc52ddf24e81d02f3f932e00d6"
   solver-name = "gps-cdcl"
   solver-version = 1
