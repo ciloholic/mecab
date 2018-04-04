@@ -14,16 +14,6 @@
   version = "v1.0.0"
 
 [[projects]]
-  name = "github.com/aws/aws-lambda-go"
-  packages = [
-    "lambda",
-    "lambda/messages",
-    "lambdacontext"
-  ]
-  revision = "fafa7e49388b8991caf99308e80655ba91816b72"
-  version = "v1.1.0"
-
-[[projects]]
   branch = "master"
   name = "github.com/bluele/mecab-golang"
   packages = ["."]
@@ -47,6 +37,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "35dddae9b23d45cbe1e756d87b7ea0e05305cffc52ddf24e81d02f3f932e00d6"
+  inputs-digest = "8932891b5ddf4d68b153e111227d99c6ddd60a2eb00a8d5a021e3a572277f97a"
   solver-name = "gps-cdcl"
   solver-version = 1

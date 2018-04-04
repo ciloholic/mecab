@@ -81,6 +81,9 @@ func main() {
 	doc.Find("script").Each(func(_ int, elm *goquery.Selection) {
 		elm.SetHtml("")
 	})
+	doc.Find("noscript").Each(func(_ int, elm *goquery.Selection) {
+		elm.SetHtml("")
+	})
 	p := bluemonday.UGCPolicy()
 	html := p.Sanitize(doc.Find("body").Text())
 	html = strings.NewReplacer(
@@ -102,5 +105,7 @@ func main() {
 	// 形態素解析
 	list := parseToNode(m, html)
 	sort.Sort(ByCount{list})
-	log.Printf("%+v", list)
+	for _, val := range list {
+		log.Printf("%+v", val)
+	}
 }
