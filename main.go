@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os/exec"
 	"sort"
 	"strings"
 
@@ -73,30 +74,42 @@ func parseToNode(m *mecab.MeCab, str string) MecabList {
 
 func main() {
 	// スクレイピング
-	url := "http://localhost"
+	url := "XXXXXXXXXX"
 	doc, err := goquery.NewDocument(url)
 	if err != nil {
 		panic(err)
 	}
+
+	// script / noscript / style を削除
 	doc.Find("script").Each(func(_ int, elm *goquery.Selection) {
 		elm.SetHtml("")
 	})
 	doc.Find("noscript").Each(func(_ int, elm *goquery.Selection) {
 		elm.SetHtml("")
 	})
-	p := bluemonday.UGCPolicy()
-	html := p.Sanitize(doc.Find("body").Text())
+	doc.Find("style").Each(func(_ int, elm *goquery.Selection) {
+		elm.SetHtml("")
+	})
+
+	// htmlタグの除去
+	html := bluemonday.UGCPolicy().Sanitize(doc.Find("body").Text())
 	html = strings.NewReplacer(
-		" ", "",
-		"　", "",
+		"　", " ",
 		"\t", "",
 		"\r\n", "",
 		"\r", "",
 		"\n", "",
 	).Replace(html)
 
-	// Mecabの初期設定
-	m, err := mecab.New("-Owakati")
+	// 辞書パスの作成
+	command := "echo `mecab-config --dicdir`\"/mecab-ipadic-neologd\""
+	path, err := exec.Command("sh", "-c", command).Output()
+	if err != nil {
+		panic(err)
+	}
+
+	// Mecabの設定
+	m, err := mecab.New("-d " + string(path))
 	if err != nil {
 		panic(err)
 	}
